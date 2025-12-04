@@ -11,8 +11,7 @@ headers = {
     "User-Agent": "Mozilla/5.0"
 }
 
-UPLOAD_FOLDER = "C:\Users\Administrator\iCloudDrive\BiliAutoUpload"
-
+UPLOAD_FOLDER = "C:\\Users\\Administrator\\iCloudDrive\\BiliAutoUpload"
 def upload_video(file_path):
     print(f"开始上传: {file_path}")
     # 这里是伪示例，B站上传接口复杂，需要使用官方 API 或第三方库

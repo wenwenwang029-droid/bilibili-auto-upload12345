@@ -1,0 +1,27 @@
+name: Auto Upload to Bilibili
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"  # 每 10 分钟运行一次
+  workflow_dispatch: {}     # 可以手动触发
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run uploader
+        env:
+          BILI_SESSDATA: ${{ secrets.BILI_SESSDATA }}
+          BILI_JCT: ${{ secrets.BILI_JCT }}
+        run: python uploader.py
